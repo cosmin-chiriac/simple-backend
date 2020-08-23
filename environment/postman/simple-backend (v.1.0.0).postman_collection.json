@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "829e5651-e5ea-4f86-b634-c7c5356c5aee",
+		"name": "simple-backend (v.1.0.0)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "33ea0da2-e286-4848-9af1-df3079a33f45",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"\",\r\n    \"email\": \"\",\r\n    \"age\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/user/register",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0830f775-c671-4ae0-b5a0-2e08cf9b6892",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/user/all",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"user",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1bedf200-7d2b-4416-91ad-118905aead2b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/user/byid/{id}",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"user",
+								"byid",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ping",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d352d1e1-881e-4be5-a2da-3bd36b0d9cb5",
+						"exec": [
+							"postman.setEnvironmentVariable(\"env\", \"localhost:8080\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{env}}/actuator/health",
+					"host": [
+						"{{env}}"
+					],
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
