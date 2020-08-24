@@ -4,11 +4,13 @@ import com.simple.simplebackend.dao.UserDAO;
 import com.simple.simplebackend.dto.UserDTO;
 import com.simple.simplebackend.enumtype.OperationTypeEnum;
 import com.simple.simplebackend.model.User;
-import com.simple.simplebackend.repo.UserRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.util.ArrayList;
 
 @Service
 public class UserService {
@@ -38,6 +40,15 @@ public class UserService {
             User user = new User();
             user.setName(userDTO.getName());
             user.setEmail(userDTO.getEmail());
+            if (userDTO.getAge()!=null){
+                user.setAge(userDTO.getAge());
+            }
+            if (!CollectionUtils.isEmpty(userDTO.getArticles())) {
+                user.setArticles(new ArrayList<>());
+                userDTO.getArticles().forEach(article -> user.getArticles().add(article));
+
+                            }
+
             LOGGER.info("User registered");
             return userDAO.save(user);
 

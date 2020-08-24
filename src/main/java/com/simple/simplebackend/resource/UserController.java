@@ -1,7 +1,6 @@
 package com.simple.simplebackend.resource;
 
 import com.simple.simplebackend.dto.UserDTO;
-import com.simple.simplebackend.exceptions.UserNotFoundException;
 import com.simple.simplebackend.model.User;
 import com.simple.simplebackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class UserController {
 
     @GetMapping(path = "/byid/{id}")
     public @ResponseBody
-    User getByID(@PathVariable ("id") @NotNull int id) {
+    User getByID(@PathVariable("id") @NotNull int id) {
         return userService.getById(id);
     }
 

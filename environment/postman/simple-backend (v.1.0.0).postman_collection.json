@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "829e5651-e5ea-4f86-b634-c7c5356c5aee",
-		"name": "simple-backend (v.1.0.0)",
+		"name": "simple-backend (v.1.0.1)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -27,7 +27,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"\",\r\n    \"email\": \"\",\r\n    \"age\":\"\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Test name\",\r\n    \"email\": \"asa@test.com\",\r\n    \"age\": 34\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -95,18 +95,172 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{env}}/user/byid/{id}",
+							"raw": "{{env}}/user/byid/1",
 							"host": [
 								"{{env}}"
 							],
 							"path": [
 								"user",
 								"byid",
-								"{id}"
+								"1"
 							]
 						}
 					},
 					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Article",
+			"item": [
+				{
+					"name": "create article",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ff054935-ba8c-4824-a1ae-d5aeb09f6c0d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": \"LIFESTYLE\",\r\n    \"title\": \"First Lifestyle article123\",\r\n    \"body\": \" Lorem Ipsum is simply dummy text.\",\r\n    \"user\": {\r\n        \"id\":10\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/article/create",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"article",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all articles",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2e57e430-23f2-4d10-9d3f-e10ff9b65b0e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/article/getall",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"article",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "create comment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0e2d7667-37f8-465e-9fdd-a6d159b12032",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 3,\r\n    \"title\": \"really liked this article\",\r\n    \"message\": \"First Lifestyle article123\",\r\n    \"referredArticle\": {\r\n        \"id\": 47\r\n    },\r\n    \"commentAuthor\": {\r\n        \"id\": 47\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/comment/create",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"comment",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "85e5cabe-ca45-47d7-a48b-3105bc27e544",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "544680d8-9d9d-4760-adc2-4325caa73eeb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -140,6 +294,28 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "697417de-8e56-43ff-bb0b-42c11b68fff4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "154a84c0-b19c-4d3d-a7c1-95838193b0ea",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"protocolProfileBehavior": {}
