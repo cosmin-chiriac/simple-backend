@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
@@ -25,6 +26,7 @@ public class UserDTO {
     private String email;
 
     @Min(value = 18, message = "Minimum age is 18")
+    @Max(value = 150, message = "If you are really this old please contact Guinness Book")
     private Integer age;
 
     private List<Article> articles;

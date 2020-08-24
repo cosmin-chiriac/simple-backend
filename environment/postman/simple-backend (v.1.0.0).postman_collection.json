@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "829e5651-e5ea-4f86-b634-c7c5356c5aee",
-		"name": "simple-backend (v.1.0.1)",
+		"name": "simple-blog-backend (v.1.0.2)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -27,7 +27,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Test name\",\r\n    \"email\": \"asa@test.com\",\r\n    \"age\": 34\r\n    \r\n}",
+							"raw": "{\r\n    \"name\": \"Test name\",\r\n    \"email\": \"asa@test.com\",\r\n    \"age\": 30\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -42,6 +42,46 @@
 							"path": [
 								"user",
 								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5e2e2402-39f1-4889-a7a2-d9a939daf446",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Updated name\",\r\n    \"email\": \"updatedemail@test.com\",\r\n    \"age\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/user/update/16",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"user",
+								"update",
+								"16"
 							]
 						}
 					},
@@ -95,14 +135,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{env}}/user/byid/1",
+							"raw": "{{env}}/user/byid/16",
 							"host": [
 								"{{env}}"
 							],
 							"path": [
 								"user",
 								"byid",
-								"1"
+								"16"
 							]
 						}
 					},
@@ -133,7 +173,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"category\": \"LIFESTYLE\",\r\n    \"title\": \"First Lifestyle article123\",\r\n    \"body\": \" Lorem Ipsum is simply dummy text.\",\r\n    \"user\": {\r\n        \"id\":10\r\n    }\r\n}",
+							"raw": "{\r\n    \"category\": \"LIFESTYLE\",\r\n    \"title\": \"First Lifestyle article\",\r\n    \"body\": \" Lorem Ipsum is simply dummy text.\",\r\n    \"user\": {\r\n        \"id\": 10\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -148,6 +188,46 @@
 							"path": [
 								"article",
 								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update article",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ca3e9815-1aab-4b75-8479-71623a86f83c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": \"TECHNOLOGY\",\r\n    \"title\": \"Updated title\",\r\n    \"body\": \"Updated Lorem Ipsum is simply dummy text.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/article/update/1",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"article",
+								"update",
+								"1"
 							]
 						}
 					},
@@ -190,6 +270,92 @@
 							"path": [
 								"article",
 								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get article by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f8276ca9-2ace-4e73-869c-7c81e41d295e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/article/getbyid/12",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"article",
+								"getbyid",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get article by user id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "77b2bf0d-7dfa-4f6d-b8ef-828c2519c1ae",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/article/getallbyuserid/12",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"article",
+								"getallbyuserid",
+								"12"
 							]
 						}
 					},

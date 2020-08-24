@@ -4,6 +4,7 @@ import com.simple.simplebackend.dto.UserDTO;
 import com.simple.simplebackend.model.User;
 import com.simple.simplebackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +22,14 @@ public class UserController {
 
     @PostMapping("/register")
     public @ResponseBody
-    String registerUSer(@Valid @RequestBody UserDTO user) {
+    String registerUser(@Valid @RequestBody UserDTO user) {
         return userService.registerUser(user);
+    }
+
+    @PutMapping("/update/{id}")
+    public @ResponseBody String updateUser (@PathVariable("id") @NotNull int id, @Valid @RequestBody UserDTO userDTO) {
+        userDTO.setId(id);
+        return userService.updateUser(userDTO);
     }
 
     @GetMapping(path = "/all")

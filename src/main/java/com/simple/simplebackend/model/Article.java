@@ -1,12 +1,10 @@
 package com.simple.simplebackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.w3c.dom.ls.LSInput;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -21,6 +19,7 @@ import java.util.List;
 @Table(name = "articles")
 public class Article implements Serializable {
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -36,7 +35,7 @@ public class Article implements Serializable {
 
     @ManyToOne ()
     @JoinColumn (name = "user_id")
-    @JsonManagedReference(value = "article-details")
+    //@JsonManagedReference(value = "article-details")
     private User user;
 
     @OneToMany (mappedBy = "referredArticle")

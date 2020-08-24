@@ -1,6 +1,7 @@
 package com.simple.simplebackend.service;
 
 import com.simple.simplebackend.dao.ArticleDAO;
+import com.simple.simplebackend.dto.ArticleDTO;
 import com.simple.simplebackend.enumtype.OperationTypeEnum;
 import com.simple.simplebackend.model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,27 +15,33 @@ public class ArticleService {
     private ArticleDAO articleDAO;
 
 
-    public String createArticle(Article article) {
-        Article savedArticle = handleSaveArticle(OperationTypeEnum.CREATE, article);
+    public String createArticle(ArticleDTO articleDTO) {
+        Article savedArticle = handleSaveArticle(OperationTypeEnum.CREATE, articleDTO);
         return "Article created with Id " + savedArticle.getId();
     }
+
+    public String updateArticle(Integer id, ArticleDTO articleDTO) {
+        Article savedArticle = handleSaveArticle(OperationTypeEnum.UPDATE, articleDTO);
+        return "Article updated with Id " + savedArticle.getId();
+    }
+
     public Iterable<Article> getAllArticles() {
         return articleDAO.getAllArticles();
     }
 
+    public Article getArticleById(Integer id) {
+        return articleDAO.getArticleById(id);
+    }
+    public Iterable<Article> getAllArticlesByUserId(Integer userId) {
+        return articleDAO.getAllArticlesByUserId(userId);
+    }
 
 
-
-
-
-    private Article handleSaveArticle(OperationTypeEnum operation, Article article) {
+    private Article handleSaveArticle(OperationTypeEnum operation, ArticleDTO article) {
         //business logic
-        if (OperationTypeEnum.CREATE.equals(operation)) {
-        //business logic for creation
-            return articleDAO.saveArticle(article);
-        }
-        //business logic for update
-        return articleDAO.saveArticle(article);
+
+        return articleDAO.saveArticle(operation, article);
+
     }
 
 

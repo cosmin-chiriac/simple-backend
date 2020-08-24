@@ -1,11 +1,14 @@
 package com.simple.simplebackend.resource;
 
+import com.simple.simplebackend.dto.ArticleDTO;
 import com.simple.simplebackend.model.Article;
 import com.simple.simplebackend.repo.UserRepo;
 import com.simple.simplebackend.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.constraints.NotNull;
 
 @RestController
 @Validated
@@ -14,24 +17,32 @@ public class ArticleController {
 
     @Autowired
     ArticleService articleService;
-    @Autowired
-    UserRepo userRepo;
+
 
     @PostMapping(path = "/create")
     public @ResponseBody
-    String createArticle(@RequestBody Article article) {
-       /* Optional<User> userOpt = userRepo.findById(article.getAuthorId().getId());
-        User user = userOpt.get();
-        article.setAuthorId(user);
-        user.getArticles().add(article);
-        userRepo.save(user);*/
+    String createArticle(@RequestBody ArticleDTO articleDTO) {
+      return articleService.createArticle(articleDTO);
+    }
 
-        return articleService.createArticle(article);
+    @PutMapping(path = "/update/{id}")
+    public @ResponseBody String updateArticle (@RequestParam ("id") Integer id,@RequestBody ArticleDTO articleDTO) {
+    return articleService.updateArticle(id, articleDTO);
     }
 
     @GetMapping(path = "/getall")
     public @ResponseBody
     Iterable<Article> getAllArticles() {
+        return articleService.getAllArticles();
+    }
+
+    @GetMapping(path = "/getbyid/{id}")
+    public @ResponseBody Article getArticleById (@PathVariable("id") @NotNull int id) {
+        return articleService.getArticleById(id);
+    }
+    @GetMapping(path = "/getallbyuserid/{userId}")
+    public @ResponseBody
+    Iterable<Article> getAllArticlesByUserId(@PathVariable("userId") @NotNull int userId) {
         return articleService.getAllArticles();
     }
 }
