@@ -2,9 +2,10 @@ package com.simple.simplebackend.resource;
 
 import com.simple.simplebackend.dto.ArticleDTO;
 import com.simple.simplebackend.model.Article;
-import com.simple.simplebackend.repo.UserRepo;
 import com.simple.simplebackend.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,9 +32,10 @@ public class ArticleController {
     }
 
     @GetMapping(path = "/getall")
+
     public @ResponseBody
-    Iterable<Article> getAllArticles() {
-        return articleService.getAllArticles();
+    Iterable<Article> getAllArticles(@PageableDefault(page = 0, size = 5)Pageable pageable) {
+        return articleService.getAllArticles(pageable);
     }
 
     @GetMapping(path = "/getbyid/{id}")
@@ -43,6 +45,6 @@ public class ArticleController {
     @GetMapping(path = "/getallbyuserid/{userId}")
     public @ResponseBody
     Iterable<Article> getAllArticlesByUserId(@PathVariable("userId") @NotNull int userId) {
-        return articleService.getAllArticles();
+        return articleService.getAllArticlesByUserId(userId);
     }
 }

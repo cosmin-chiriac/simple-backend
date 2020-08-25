@@ -5,6 +5,7 @@ import com.simple.simplebackend.dto.ArticleDTO;
 import com.simple.simplebackend.enumtype.OperationTypeEnum;
 import com.simple.simplebackend.model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,8 +26,8 @@ public class ArticleService {
         return "Article updated with Id " + savedArticle.getId();
     }
 
-    public Iterable<Article> getAllArticles() {
-        return articleDAO.getAllArticles();
+    public Iterable<Article> getAllArticles(Pageable pageable) {
+        return articleDAO.getAllArticles(pageable);
     }
 
     public Article getArticleById(Integer id) {

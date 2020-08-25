@@ -10,6 +10,7 @@ import com.simple.simplebackend.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -20,8 +21,8 @@ public class ArticleDAO {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
-    public Iterable<Article> getAllArticles() {
-        return articleRepo.findAll();
+    public Iterable<Article> getAllArticles(Pageable pageable) {
+        return articleRepo.findAll(pageable);
     }
 
     public Article saveArticle(OperationTypeEnum operation, ArticleDTO articleDTO) {
@@ -33,6 +34,10 @@ public class ArticleDAO {
 
     public Article getArticleById(Integer id) {
         return articleRepo.findById(id).orElseThrow(() -> new ArticleNotFoundException(id));
+    }
+
+    public Iterable<Article> getAllArticlesByUserId(Integer userId) {
+        return articleRepo.findAllByUserId(userId);
     }
 
     private Article createArticle(ArticleDTO articleDTO) {
@@ -61,11 +66,8 @@ public class ArticleDAO {
         if (!StringUtils.isEmpty(articleDTO.getBody())) {
             article.setBody(articleDTO.getBody());
         }
-        LOGGER.info("Article with id: " + article.getId()+ " was updated.");
+        LOGGER.info("Article with id: " + article.getId() + " was updated.");
         return article;
     }
 
-    public Iterable<Article> getAllArticlesByUserId(Integer userId) {
-        return articleRepo.findAllByUserId(userId);
-    }
 }
