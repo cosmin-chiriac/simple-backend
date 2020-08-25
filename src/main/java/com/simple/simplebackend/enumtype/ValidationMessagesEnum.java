@@ -9,6 +9,7 @@ public enum ValidationMessagesEnum {
     ValidationMessagesEnum(String value) {
         this.value = value;
     }
+
     public String getValue() {
         return value;
     }

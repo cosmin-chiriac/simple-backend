@@ -10,6 +10,6 @@ public enum RegexValidateEnum {
 
     @Override
     public String toString() {
-        return  text;
+        return text;
     }
 }

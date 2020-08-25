@@ -1,6 +1,5 @@
 package com.simple.simplebackend.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,7 +38,7 @@ public class Article implements Serializable {
     private User user;
 
     @OneToMany(mappedBy = "article")
-    @JsonManagedReference(value = "comments-details")
+    //@JsonManagedReference(value = "comments-details")
     private List<Comment> articleComments;
 
 

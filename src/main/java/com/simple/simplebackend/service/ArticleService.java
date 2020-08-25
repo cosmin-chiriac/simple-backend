@@ -22,6 +22,7 @@ public class ArticleService {
     }
 
     public String updateArticle(Integer id, ArticleDTO articleDTO) {
+        articleDTO.setId(id);
         Article savedArticle = handleSaveArticle(OperationTypeEnum.UPDATE, articleDTO);
         return "Article updated with Id " + savedArticle.getId();
     }
@@ -33,6 +34,7 @@ public class ArticleService {
     public Article getArticleById(Integer id) {
         return articleDAO.getArticleById(id);
     }
+
     public Iterable<Article> getAllArticlesByUserId(Integer userId) {
         return articleDAO.getAllArticlesByUserId(userId);
     }

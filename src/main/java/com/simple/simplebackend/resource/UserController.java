@@ -2,9 +2,9 @@ package com.simple.simplebackend.resource;
 
 import com.simple.simplebackend.dto.UserDTO;
 import com.simple.simplebackend.model.User;
+import com.simple.simplebackend.repo.UserRepo;
 import com.simple.simplebackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +18,8 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    UserRepo userRepo;
 
 
     @PostMapping("/register")
@@ -27,7 +29,8 @@ public class UserController {
     }
 
     @PutMapping("/update/{id}")
-    public @ResponseBody String updateUser (@PathVariable("id") @NotNull int id, @Valid @RequestBody UserDTO userDTO) {
+    public @ResponseBody
+    String updateUser(@PathVariable("id") @NotNull int id, @Valid @RequestBody UserDTO userDTO) {
         userDTO.setId(id);
         return userService.updateUser(userDTO);
     }
@@ -38,10 +41,17 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @GetMapping(path = "/test")
+    public @ResponseBody
+    Iterable<String> test() {
+        return userRepo.findSubscribersByCategory("TECHNOLOGY");
+    }
+
     @GetMapping(path = "/byid/{id}")
     public @ResponseBody
     User getByID(@PathVariable("id") @NotNull int id) {
         return userService.getById(id);
     }
+
 
 }

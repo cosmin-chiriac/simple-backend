@@ -3,6 +3,7 @@ package com.simple.simplebackend.dao;
 import com.simple.simplebackend.dto.UserDTO;
 import com.simple.simplebackend.enumtype.OperationTypeEnum;
 import com.simple.simplebackend.exceptions.UserNotFoundException;
+import com.simple.simplebackend.mail.MailHandler;
 import com.simple.simplebackend.model.User;
 import com.simple.simplebackend.repo.UserRepo;
 import com.simple.simplebackend.service.UserService;
@@ -10,13 +11,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
+
+import java.util.ArrayList;
 
 @Component
 public class UserDAO {
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
     @Autowired
     UserRepo userRepo;
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+    @Autowired
+    MailHandler mailHandler;
 
     public Iterable<User> findAll() {
         return userRepo.findAll();
@@ -36,6 +42,10 @@ public class UserDAO {
         } else return updateUser(userDTO);
     }
 
+    public Iterable<String> getSubscribersEmailList(String category) {
+      Iterable<String> subscribedUsers = userRepo.findSubscribersByCategory(category);
+      return subscribedUsers;
+    }
 
     private User createUser(UserDTO userDTO) {
         User user = new User();
@@ -44,8 +54,9 @@ public class UserDAO {
         if (userDTO.getAge() != null) {
             user.setAge(userDTO.getAge());
         }
-        LOGGER.info("User registered with id: " + user.getId());
-        return userRepo.save(user);
+        User savedUser = userRepo.save(user);
+        LOGGER.info("User registered with id: " + savedUser.getId());
+        return savedUser;
     }
 
     private User updateUser(UserDTO userDTO) {
@@ -59,7 +70,14 @@ public class UserDAO {
         if (userDTO.getAge() != null) {
             user.setAge(userDTO.getAge());
         }
-        LOGGER.info("User updated with id: " + user.getId());
-        return userRepo.save(user);
+        if (!CollectionUtils.isEmpty(userDTO.getSubscriptions())) {
+            if (CollectionUtils.isEmpty(user.getSubscriptions())) {
+                user.setSubscriptions(new ArrayList<>());
+            }
+            user.getSubscriptions().addAll(userDTO.getSubscriptions());
+        }
+        User savedUser = userRepo.save(user);
+        LOGGER.info("User with id: " + user.getId() + " was updated");
+        return savedUser;
     }
 }

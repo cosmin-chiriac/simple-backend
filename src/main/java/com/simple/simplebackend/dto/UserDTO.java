@@ -1,6 +1,5 @@
 package com.simple.simplebackend.dto;
 
-import com.simple.simplebackend.model.Article;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -21,7 +20,7 @@ public class UserDTO {
     @NotBlank(message = "A name must be provided.")
     private String name;
 
-    @NotBlank (message = "An email must be provided.")
+    @NotBlank(message = "An email must be provided.")
     @Email()
     private String email;
 
@@ -29,5 +28,5 @@ public class UserDTO {
     @Max(value = 150, message = "If you are really this old please contact Guinness Book")
     private Integer age;
 
-    private List<Article> articles;
+    private List<String> subscriptions;
 }

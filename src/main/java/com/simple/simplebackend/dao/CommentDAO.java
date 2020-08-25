@@ -12,17 +12,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CommentDAO {
-@Autowired
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+    @Autowired
     CommentRepo commentRepo;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
-
     public Comment saveComment(OperationTypeEnum operationType, Comment comment) {
-        if(OperationTypeEnum.CREATE.equals(operationType)){
+        if (OperationTypeEnum.CREATE.equals(operationType)) {
             //data logic for create
             Comment savedComment = commentRepo.save(comment);
             LOGGER.info("Comment created with id: " + savedComment.getId());
-         return savedComment;
+            return savedComment;
         } else
         //data logic for update
         {
@@ -33,7 +32,7 @@ public class CommentDAO {
     }
 
     public Iterable<Comment> getAllCommentsForArticle(int articleId, Pageable pageable) {
-        return commentRepo.findAllByArticleId(articleId,pageable);
+        return commentRepo.findAllByArticleId(articleId, pageable);
     }
 
     public Iterable<Comment> getAllCommentsForUser(int userId) {

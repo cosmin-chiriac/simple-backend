@@ -33,9 +33,8 @@ public class ArticleController {
     }
 
     @GetMapping(path = "/getall")
-
     public @ResponseBody
-    Iterable<Article> getAllArticles(@PageableDefault(page = 0, size = 5) Pageable pageable) {
+    Iterable<Article> getAllArticles(@PageableDefault(size = 5) Pageable pageable) {
         return articleService.getAllArticles(pageable);
     }
 

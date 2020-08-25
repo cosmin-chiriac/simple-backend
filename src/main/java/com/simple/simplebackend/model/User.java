@@ -28,6 +28,10 @@ public class User implements Serializable {
 
     private Integer age;
 
+    /* List of the article types the user is subscribed to. Has to match the values in ArticleTypeEnum*/
+    @ElementCollection
+    private List<String> subscriptions;
+
     @OneToMany(mappedBy = "user")
     @JsonBackReference(value = "article-details")
     private List<Article> articles;
