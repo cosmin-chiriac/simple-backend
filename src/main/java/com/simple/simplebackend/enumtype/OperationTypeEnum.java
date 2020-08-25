@@ -4,7 +4,7 @@ package com.simple.simplebackend.enumtype;
  * The Enum OperationTypeEnum will contain API operation types
  */
 public enum OperationTypeEnum {
-  
+
     CREATE("create"),
     UPDATE("update");
 

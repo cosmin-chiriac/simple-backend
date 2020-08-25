@@ -1,601 +1,601 @@
 {
-  "info": {
-    "_postman_id": "829e5651-e5ea-4f86-b634-c7c5356c5aee",
-    "name": "simple-blog-backend (v.1.0.5)",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "User",
-      "item": [
-        {
-          "name": "register user",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "33ea0da2-e286-4848-9af1-df3079a33f45",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"name\": \"Test name\",\r\n    \"email\": \"asa@test.com\",\r\n    \"age\": 30\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{env}}/user/register",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "user",
-                "register"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "update user",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "5e2e2402-39f1-4889-a7a2-d9a939daf446",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"name\": \"Updated name\",\r\n    \"email\": \"updatedemail@test.com\",\r\n    \"age\": 100,\r\n    \"subscriptions\": [\r\n        \"TRAVEL\",\r\n        \"TECHNOLOGY\"\r\n    ]\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{env}}/user/update/16",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "user",
-                "update",
-                "16"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "get all users",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "0830f775-c671-4ae0-b5a0-2e08cf9b6892",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{env}}/user/all",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "user",
-                "all"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "get user by id",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "1bedf200-7d2b-4416-91ad-118905aead2b",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{env}}/user/byid/16",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "user",
-                "byid",
-                "16"
-              ]
-            }
-          },
-          "response": []
-        }
-      ],
-      "protocolProfileBehavior": {}
-    },
-    {
-      "name": "Article",
-      "item": [
-        {
-          "name": "create article",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "ff054935-ba8c-4824-a1ae-d5aeb09f6c0d",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"category\": \"LIFESTYLE\",\r\n    \"title\": \"First Lifestyle article\",\r\n    \"body\": \" Lorem Ipsum is simply dummy text.\",\r\n    \"user\": {\r\n        \"id\": 10\r\n    }\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{env}}/article/create",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "article",
-                "create"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "update article",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "ca3e9815-1aab-4b75-8479-71623a86f83c",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"category\": \"TECHNOLOGY\",\r\n    \"title\": \"Updated title\",\r\n    \"body\": \"Updated Lorem Ipsum is simply dummy text.\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{env}}/article/update/1",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "article",
-                "update",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "get all articles",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "2e57e430-23f2-4d10-9d3f-e10ff9b65b0e",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{env}}/article/getall/?page=0&size=6",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "article",
-                "getall",
-                ""
-              ],
-              "query": [
-                {
-                  "key": "page",
-                  "value": "0"
-                },
-                {
-                  "key": "size",
-                  "value": "6"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "get article by id",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "f8276ca9-2ace-4e73-869c-7c81e41d295e",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{env}}/article/getbyid/12",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "article",
-                "getbyid",
-                "12"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "get article by user id",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "77b2bf0d-7dfa-4f6d-b8ef-828c2519c1ae",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{env}}/article/getallbyuserid/12",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "article",
-                "getallbyuserid",
-                "12"
-              ]
-            }
-          },
-          "response": []
-        }
-      ],
-      "protocolProfileBehavior": {}
-    },
-    {
-      "name": "Comment",
-      "item": [
-        {
-          "name": "create comment",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "0e2d7667-37f8-465e-9fdd-a6d159b12032",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"rating\": 3,\r\n    \"title\": \"really liked this article\",\r\n    \"message\": \"First Lifestyle article123\",\r\n    \"article\": {\r\n        \"id\": 7\r\n    },\r\n    \"user\": {\r\n        \"id\": 16\r\n    }\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{env}}/comment/create",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "comment",
-                "create"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "update comment",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "484a5633-0fc2-499e-ae98-36032d328885",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"rating\": 5,\r\n    \"title\": \"Updated comment title\",\r\n    \"message\": \"Edited message\",\r\n    \"article\": {\r\n        \"id\": 7\r\n    },\r\n    \"user\": {\r\n        \"id\": 16\r\n    }\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{env}}/user/update/18",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "user",
-                "update",
-                "18"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "get comments by article id",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "6080d6ad-45ca-4eab-b810-1f45a6638686",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{env}}/comment/allbyarticleId/7",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "comment",
-                "allbyarticleId",
-                "7"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "get comments by user",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "0ec1001e-899a-46f8-88a1-7171e4963ec5",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{env}}/comment/allbyuserId/16",
-              "host": [
-                "{{env}}"
-              ],
-              "path": [
-                "comment",
-                "allbyuserId",
-                "16"
-              ]
-            }
-          },
-          "response": []
-        }
-      ],
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "85e5cabe-ca45-47d7-a48b-3105bc27e544",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "544680d8-9d9d-4760-adc2-4325caa73eeb",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ],
-      "protocolProfileBehavior": {}
-    },
-    {
-      "name": "ping",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "d352d1e1-881e-4be5-a2da-3bd36b0d9cb5",
-            "exec": [
-              "postman.setEnvironmentVariable(\"env\", \"localhost:8080\");"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{env}}/actuator/health",
-          "host": [
-            "{{env}}"
-          ],
-          "path": [
-            "actuator",
-            "health"
-          ]
-        }
-      },
-      "response": []
-    }
-  ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "id": "697417de-8e56-43ff-bb0b-42c11b68fff4",
-        "type": "text/javascript",
-        "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "id": "154a84c0-b19c-4d3d-a7c1-95838193b0ea",
-        "type": "text/javascript",
-        "exec": [
-          ""
-        ]
-      }
-    }
-  ],
-  "protocolProfileBehavior": {}
+	"info": {
+		"_postman_id": "829e5651-e5ea-4f86-b634-c7c5356c5aee",
+		"name": "simple-blog-backend (v.1.0.5)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "33ea0da2-e286-4848-9af1-df3079a33f45",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test name\",\r\n    \"email\": \"asa@test.com\",\r\n    \"age\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/user/register",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5e2e2402-39f1-4889-a7a2-d9a939daf446",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Updated name\",\r\n    \"email\": \"updatedemail@test.com\",\r\n    \"age\": 100,\r\n    \"subscriptions\": [\r\n        \"TRAVEL\",\r\n        \"TECHNOLOGY\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/user/update/16",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"user",
+								"update",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0830f775-c671-4ae0-b5a0-2e08cf9b6892",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/user/all",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"user",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1bedf200-7d2b-4416-91ad-118905aead2b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/user/byid/16",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"user",
+								"byid",
+								"16"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Article",
+			"item": [
+				{
+					"name": "create article",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ff054935-ba8c-4824-a1ae-d5aeb09f6c0d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": \"LIFESTYLE\",\r\n    \"title\": \"First Lifestyle article\",\r\n    \"body\": \" Lorem Ipsum is simply dummy text.\",\r\n    \"user\": {\r\n        \"id\": 10\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/article/create",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"article",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update article",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ca3e9815-1aab-4b75-8479-71623a86f83c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": \"TECHNOLOGY\",\r\n    \"title\": \"Updated title\",\r\n    \"body\": \"Updated Lorem Ipsum is simply dummy text.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/article/update/1",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"article",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all articles",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2e57e430-23f2-4d10-9d3f-e10ff9b65b0e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/article/getall/?page=0&size=6",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"article",
+								"getall",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get article by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f8276ca9-2ace-4e73-869c-7c81e41d295e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/article/getbyid/12",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"article",
+								"getbyid",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get article by user id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "77b2bf0d-7dfa-4f6d-b8ef-828c2519c1ae",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/article/getallbyuserid/12",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"article",
+								"getallbyuserid",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "create comment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0e2d7667-37f8-465e-9fdd-a6d159b12032",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 4,\r\n    \"title\": \"really liked this article\",\r\n    \"message\": \"First Lifestyle article\",\r\n    \"article\": {\r\n        \"id\": 7\r\n    },\r\n    \"user\": {\r\n        \"id\": 16\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/comment/create",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"comment",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update comment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "484a5633-0fc2-499e-ae98-36032d328885",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 5,\r\n    \"title\": \"Updated comment title\",\r\n    \"message\": \"Edited message\",\r\n    \"article\": {\r\n        \"id\": 7\r\n    },\r\n    \"user\": {\r\n        \"id\": 16\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/user/update/18",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"user",
+								"update",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get comments by article id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6080d6ad-45ca-4eab-b810-1f45a6638686",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/comment/allbyarticleId/7",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"comment",
+								"allbyarticleId",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get comments by user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0ec1001e-899a-46f8-88a1-7171e4963ec5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/comment/allbyuserId/16",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"comment",
+								"allbyuserId",
+								"16"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "85e5cabe-ca45-47d7-a48b-3105bc27e544",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "544680d8-9d9d-4760-adc2-4325caa73eeb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ping",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d352d1e1-881e-4be5-a2da-3bd36b0d9cb5",
+						"exec": [
+							"postman.setEnvironmentVariable(\"env\", \"localhost:8080\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{env}}/actuator/health",
+					"host": [
+						"{{env}}"
+					],
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "697417de-8e56-43ff-bb0b-42c11b68fff4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "154a84c0-b19c-4d3d-a7c1-95838193b0ea",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
 }
