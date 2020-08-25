@@ -33,12 +33,13 @@ public class Article implements Serializable {
     @Lob
     private String body;
 
-    @ManyToOne ()
-    @JoinColumn (name = "user_id")
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
     //@JsonManagedReference(value = "article-details")
     private User user;
 
-    @OneToMany (mappedBy = "referredArticle")
+    @OneToMany(mappedBy = "article")
+    @JsonManagedReference(value = "comments-details")
     private List<Comment> articleComments;
 
 

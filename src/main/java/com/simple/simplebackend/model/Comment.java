@@ -1,5 +1,6 @@
 package com.simple.simplebackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,8 +21,8 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-   // @Min(value = 1, message = "The rating must be between 1 and 5")
-  //  @Max(value = 5, message = "The rating must be between 1 and 5")
+    @Min(value = 1, message = "The rating must be between 1 and 5")
+    @Max(value = 5, message = "The rating must be between 1 and 5")
     private int rating;
 
     private String title;
@@ -30,10 +31,12 @@ public class Comment {
     private String message;
 
     @ManyToOne()
+    @JsonBackReference(value = "comment-user-details")
     @JoinColumn(name = "userId")
-    private User commentAuthor;
+    private User user;
 
     @ManyToOne
+    @JsonBackReference(value = "comment-article-details")
     @JoinColumn(name = "articleId")
-    private Article referredArticle;
+    private Article article;
 }

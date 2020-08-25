@@ -16,10 +16,9 @@ import org.springframework.util.StringUtils;
 
 @Component
 public class ArticleDAO {
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
     @Autowired
     private ArticleRepo articleRepo;
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
     public Iterable<Article> getAllArticles(Pageable pageable) {
         return articleRepo.findAll(pageable);

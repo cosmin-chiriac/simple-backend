@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "829e5651-e5ea-4f86-b634-c7c5356c5aee",
-		"name": "simple-blog-backend (v.1.0.3)",
+		"name": "simple-blog-backend (v.1.0.4)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -263,7 +263,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{env}}/article/getall/?page=0&size=3",
+							"raw": "{{env}}/article/getall/?page=0&size=6",
 							"host": [
 								"{{env}}"
 							],
@@ -279,7 +279,7 @@
 								},
 								{
 									"key": "size",
-									"value": "3"
+									"value": "6"
 								}
 							]
 						}
@@ -397,7 +397,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"rating\": 3,\r\n    \"title\": \"really liked this article\",\r\n    \"message\": \"First Lifestyle article123\",\r\n    \"referredArticle\": {\r\n        \"id\": 47\r\n    },\r\n    \"commentAuthor\": {\r\n        \"id\": 47\r\n    }\r\n}",
+							"raw": "{\r\n    \"rating\": 3,\r\n    \"title\": \"really liked this article\",\r\n    \"message\": \"First Lifestyle article123\",\r\n    \"article\": {\r\n        \"id\": 7\r\n    },\r\n    \"user\": {\r\n        \"id\": 16\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -412,6 +412,108 @@
 							"path": [
 								"comment",
 								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update comment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "484a5633-0fc2-499e-ae98-36032d328885",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 5,\r\n    \"title\": \"Updated comment title\",\r\n    \"message\": \"Edited message\",\r\n    \"article\": {\r\n        \"id\": 7\r\n    },\r\n    \"user\": {\r\n        \"id\": 16\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/user/update/18",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"user",
+								"update",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get comments by article id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6080d6ad-45ca-4eab-b810-1f45a6638686",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/comment/allbyarticleId/7",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"comment",
+								"allbyarticleId",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get comments by user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0ec1001e-899a-46f8-88a1-7171e4963ec5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/comment/allbyuserId/16",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"comment",
+								"allbyuserId",
+								"16"
 							]
 						}
 					},

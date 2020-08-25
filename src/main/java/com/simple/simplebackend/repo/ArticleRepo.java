@@ -2,7 +2,6 @@ package com.simple.simplebackend.repo;
 
 import com.simple.simplebackend.model.Article;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
