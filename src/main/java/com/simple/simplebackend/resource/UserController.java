@@ -63,15 +63,6 @@ public class UserController {
     }
 
     /**
-     * Test iterable.
-     */
-    @GetMapping(path = "/test")
-    public @ResponseBody
-    Iterable<String> test() {
-        return userRepo.findSubscribersByCategory("TECHNOLOGY");
-    }
-
-    /**
      * Gets by id.
      *
      * @param id the id
