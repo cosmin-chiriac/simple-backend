@@ -16,35 +16,66 @@ import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 
+
 @Component
 public class UserDAO {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+
     @Autowired
     UserRepo userRepo;
+
     @Autowired
     MailHandler mailHandler;
 
+    /**
+     * Find all Users.
+     */
     public Iterable<User> findAll() {
         return userRepo.findAll();
     }
 
+    /**
+     * Find by id user.
+     *
+     * @param id the id
+     * @return the user
+     */
     public User findById(int id) {
         return userRepo.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
 
+    /**
+     * Save user.
+     *
+     * @param user the user
+     * @return the user
+     */
     public User save(User user) {
         return userRepo.save(user);
     }
 
+    /**
+     * Save user user.
+     *
+     * @param operationType the operation type
+     * @param userDTO       the user dto
+     * @return the user
+     */
     public User saveUser(OperationTypeEnum operationType, UserDTO userDTO) {
         if (OperationTypeEnum.CREATE.equals(operationType)) {
             return createUser(userDTO);
         } else return updateUser(userDTO);
     }
 
+    /**
+     * Gets subscribers email list.
+     *
+     * @param category the category
+     * @return the subscribers email list
+     */
     public Iterable<String> getSubscribersEmailList(String category) {
-      Iterable<String> subscribedUsers = userRepo.findSubscribersByCategory(category);
-      return subscribedUsers;
+        Iterable<String> subscribedUsers = userRepo.findSubscribersByCategory(category);
+        return subscribedUsers;
     }
 
     private User createUser(UserDTO userDTO) {

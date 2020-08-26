@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
 
+
 @Entity
 @Getter
 @Setter
@@ -23,6 +24,9 @@ public class Article implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    /**
+     * Must match the values in ArticleTypeEnum
+     */
     @NotBlank
     private String category;
 

@@ -10,12 +10,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class CommentDAO {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+
     @Autowired
     CommentRepo commentRepo;
 
+    /**
+     * Save comment comment.
+     *
+     * @param operationType the operation type
+     * @param comment       the comment
+     * @return the comment
+     */
     public Comment saveComment(OperationTypeEnum operationType, Comment comment) {
         if (OperationTypeEnum.CREATE.equals(operationType)) {
             //data logic for create
@@ -31,10 +40,23 @@ public class CommentDAO {
         }
     }
 
+    /**
+     * Gets all comments for article.
+     *
+     * @param articleId the article id
+     * @param pageable  the pageable
+     * @return the all comments for article
+     */
     public Iterable<Comment> getAllCommentsForArticle(int articleId, Pageable pageable) {
         return commentRepo.findAllByArticleId(articleId, pageable);
     }
 
+    /**
+     * Gets all comments for user.
+     *
+     * @param userId the user id
+     * @return the all comments for user
+     */
     public Iterable<Comment> getAllCommentsForUser(int userId) {
         return commentRepo.findAllByUserId(userId);
     }

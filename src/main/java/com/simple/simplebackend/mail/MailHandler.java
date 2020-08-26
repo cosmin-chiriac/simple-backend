@@ -8,15 +8,22 @@ import javax.mail.internet.MimeMessage;
 import java.util.Date;
 import java.util.Properties;
 
-@Component
 
+@Component
 public class MailHandler {
+    /**
+     * Send email.
+     *
+     * @param toEmail the to email
+     * @param subject the subject
+     * @param body    the body
+     */
     public void sendEmail(String toEmail, String subject, String body) {
 
-        final String fromEmail = "cosminchiriac@gmail.com"; //requires valid gmail id
+        final String fromEmail = "testemail@gmail.com"; //requires valid gmail id
 
         // if you have 2fa enabled you must generate a app speciffic password to input here at https://myaccount.google.com/security
-        final String password = "sucxnxgggkmcwxme"; // correct password for gmail id
+        final String password = "password"; // correct password for gmail id
 
 
         System.out.println("TLSEmail Start");
@@ -54,10 +61,11 @@ public class MailHandler {
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
             System.out.println("Message is ready");
             Transport.send(msg);
-
             System.out.println("Email Sent Successfully!!");
         } catch (Exception e) {
             e.printStackTrace();
+
         }
+
     }
 }
